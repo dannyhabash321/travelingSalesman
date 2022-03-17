@@ -1,10 +1,12 @@
+#Authors: Danny Habash & Blake Alvarez
+#Description: Traveling salesman problem with simulated annealing and Genetic algorithms
 import random
 import networkx as nx
 import matplotlib.pyplot as plt
 import numpy as np
 from networkx.algorithms import approximation as approx
 import time
-
+from tqdm import tqdm
 
 def GA(path):
     chromosome = path.copy()
@@ -174,8 +176,9 @@ lowest = cost
 chosenAlpha = 0.01
 chosenPath = cycle1
 
+print("\nPROGRESS: TASK 3")
+for z in tqdm(np.arange(0.01, 1.0, 0.001)):
 
-for z in np.arange(0.01, 1.0, 0.001):
     #SA to determine GA
     cycle1 = approx.simulated_annealing_tsp(G, "greedy", source=0, alpha=float("{:.3f}".format(z)))
     cost = sum(G[n][nbr]["weight"] for n, nbr in nx.utils.pairwise(cycle1))
@@ -215,9 +218,8 @@ for z in np.arange(0.01, 1.0, 0.001):
         chosenAlpha = float("{:.3f}".format(z))
         chosenPath=chosenChild
         
-
-    print("Alpha: ", float("{:.3f}".format(z)),"\t", "Path: ", chosenChild, "\t", "Cost: ", lowestCost, file=outputFile)
     
+    print("Alpha: ", float("{:.3f}".format(z)),"\t", "Path: ", chosenChild, "\t", "Cost: ", lowestCost, file=outputFile) 
 
 print("\nAlpha: ", chosenAlpha,"\t", "Path: ", chosenPath, "\t", "Cost: ", lowest)
 
