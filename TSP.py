@@ -116,7 +116,6 @@ def crossOver(parent1, parent2):
 G = nx.complete_graph(50)
 for (u, v) in G.edges():
     G.edges[u,v]['weight'] = random.randint(0,1000)
-    print(u,v,G.edges[u,v])
 
 
 
@@ -228,5 +227,3 @@ nx.draw_networkx(G, pos)
 labels = nx.get_edge_attributes(G, 'weight')
 nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
 plt.show() 
-
-
