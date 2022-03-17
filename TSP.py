@@ -221,6 +221,7 @@ for z in tqdm(np.arange(0.01, 1.0, 0.001)):
     
     print("Alpha: ", float("{:.3f}".format(z)),"\t", "Path: ", chosenChild, "\t", "Cost: ", lowestCost, file=outputFile) 
 
+print("\nTask 3: Different Alpha Values")
 print("\nAlpha: ", chosenAlpha,"\t", "Path: ", chosenPath, "\t", "Cost: ", lowest)
 
 
